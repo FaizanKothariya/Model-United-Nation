@@ -1,7 +1,7 @@
 const bookingsummaryModel = require("../model/bookingsummary-model")
  
 module.exports.addbookingsummary = function(req,res){
-    let bookingId = req.body.bookingId
+    let booking = req.body.booking
     let bseatNumber = req.body.bseatNumber
     let conferenceId = req.body.conferenceId
     let buserName = req.body.buserName
@@ -12,7 +12,7 @@ module.exports.addbookingsummary = function(req,res){
     
 
     let bookingsummary= new bookingsummaryModel({
-        bookingId:bookingId,
+        booking:booking,
         bseatNumber:bseatNumber,
         conferenceId:conferenceId,
         buserName:buserName,
@@ -31,7 +31,7 @@ module.exports.addbookingsummary = function(req,res){
 }
 
 module.exports.displaybookingsummary= function(req,res){
-    bookingsummaryModel.find(function(err,data){
+    bookingsummaryModel.find().populate("booking").exec(function(err,data){
       if(err){
           res.json({msg:"SMW", data: err , status: -1})
      }else{
@@ -54,7 +54,7 @@ module.exports.displaybookingsummary= function(req,res){
 
 module.exports.updatebookingsummary = function(req,res){
     let parambookingsummaryId = req.body.bookingsummaryId
-    let parambookingId = req.body.bookingId
+    let parambooking = req.body.booking
     let parambseatNumber = req.body.bseatNumber
     let paramconferenceId = req.body.conferenceId
     let parambuserName = req.body.buserName
@@ -63,7 +63,7 @@ module.exports.updatebookingsummary = function(req,res){
     let parambstartDate = req.body.bstartDate
     let parambtime = req.body.btime
     
-    bookingsummaryModel.updateOne({_id: parambookingsummartId}, {bookingId:parambookingId, bseatNumber:parambseatNumber,conferenceId:paramconferenceId, buserName:parambuserName, bemail:parambemail , bvenue:parambvenue, bstartDate:parambstartDate,btime:parambtime}, function(err,data){
+    bookingsummaryModel.updateOne({_id: parambookingsummaryId}, {booking:parambooking, bseatNumber:parambseatNumber,conferenceId:paramconferenceId, buserName:parambuserName, bemail:parambemail , bvenue:parambvenue, bstartDate:parambstartDate,btime:parambtime}, function(err,data){
        if (err){
            res.json({msg:"SMW", data: err, status: -1})
        }else{

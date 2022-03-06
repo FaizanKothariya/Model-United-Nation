@@ -60,7 +60,7 @@ app.put("/organizes",organizecontroller.updateorganize)
 //commitee
 app.post("/commitee",commiteecontroller.addcommitee)
 app.get("/commitee",commiteecontroller.displaycommitee)
-app.delete("/commitee/:commitee",commiteecontroller.deletecommitee)
+app.delete("/commitee/:commiteeId",commiteecontroller.deletecommitee)
 app.put("/commitee",commiteecontroller.updatecommitee)
 
 //mun
@@ -84,7 +84,7 @@ app.put("/payment", paymentcontroller.updatepaymeny)
 //booking summary
 app.post("/bookingsummary", bookingsummarycontroller.addbookingsummary)
 app.get("/bookingsummary", bookingsummarycontroller.displaybookingsummary)
-app.get("/bookingsummaty/:bookingsummaryId", bookingsummarycontroller.deletebookingsummary)
+app.delete("/bookingsummary/:bookingsummaryId", bookingsummarycontroller.deletebookingsummary)
 app.put("/bookingsummary", bookingsummarycontroller.updatebookingsummary)
 
 //mun Description

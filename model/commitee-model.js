@@ -18,7 +18,7 @@ let CommiteeSchema = new mongoose.Schema ({
         type:String
     },
     cStartDate:{
-        type:String
+        type:Date
     },
     cTime:{
         type:String

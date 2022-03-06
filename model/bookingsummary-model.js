@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 
 //Schema
  let BookingsummarySchema = new mongoose.Schema({
-     bookingId:{
+     booking:{
          type:mongoose.Schema.Types.ObjectId,
          ref:"booking"
      },
@@ -24,7 +24,7 @@ const mongoose = require("mongoose")
          type:String
      },
      bstartDate:{
-         type:String
+         type:Date
      },
      btime:{
          type:String

@@ -3,7 +3,7 @@ const munModel = require("../model/mun-model")
 module.exports.addmun = function(req,res){
     let munName = req.body.munName
     let seats = req.body.seats
-    let commiteeId = req.body.commiteeId
+    let commitee = req.body.commitee
     let cityName = req.body.cityName
     let munItnary = req.body.munItnary
     
@@ -11,7 +11,7 @@ module.exports.addmun = function(req,res){
     let mun = new munModel({
         munName:munName,
         seats:seats,
-        commiteeId:commiteeId,
+        commitee:commitee,
         cityName:cityName,
         munItnary:munItnary
     })
@@ -25,7 +25,7 @@ module.exports.addmun = function(req,res){
 }
 
 module.exports.displaymun= function(req,res){
-   munModel.find(function(err,data){
+   munModel.find().populate("commitee").exec(function(err,data){
      if(err){
          res.json({msg:"SMW", data: err , status: -1})
     }else{
@@ -50,11 +50,11 @@ module.exports.updatemun = function(req,res){
     let parammunId = req.body.munId
     let parammunName = req.body.munName
     let paramseats = req.body.seats
-    let paramcommiteeId = req.body.commiteeId
+    let paramcommitee = req.body.commitee
     let paramcityName = req.body.cityName
     let parammunItnary = req.body.munItnary
     
-   munModel.updateOne({_id: parammunId}, {munName:parammunName,seats:paramseats,commiteeId:paramcommiteeId, cityName:paramcityName, munItnary:parammunItnary}, function(err,data){
+   munModel.updateOne({_id: parammunId}, {munName:parammunName,seats:paramseats,commitee:paramcommitee, cityName:paramcityName, munItnary:parammunItnary}, function(err,data){
        if (err){
            res.json({msg:"SMW", data: err, status: -1})
        }else{

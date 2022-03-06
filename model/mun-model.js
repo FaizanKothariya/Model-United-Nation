@@ -9,7 +9,7 @@ const mongoose = require("mongoose")
      seats:{
          type:Number
      },
-    commiteeId:{
+     commitee:{
          type:mongoose.Schema.Types.ObjectId,
          ref:"commitee"
      },

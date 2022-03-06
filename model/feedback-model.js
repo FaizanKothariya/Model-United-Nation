@@ -15,7 +15,7 @@ let FeedbackSchema = new mongoose.Schema({
     rating:{
         type:Number
     },
-    Comment:{
+    comment:{
         type:String
     },
     question:{

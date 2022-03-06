@@ -2,6 +2,7 @@ const commiteeModel = require("../model/commitee-model");
 
 module.exports.addcommitee = function(req,res){
     let commiteeName = req.body.commiteeName
+    let commitee_seats = req.body.commitee_seats
     let cDetail = req.body.cDetail
     let cPhoto = req.body.cPhoto
     let cVideo = req.body.cVideo
@@ -11,6 +12,7 @@ module.exports.addcommitee = function(req,res){
 
     let commitee = new commiteeModel({
         commiteeName:commiteeName,
+        commitee_seats:commitee_seats,
         cDetail:cDetail,
         cPhoto:cPhoto,
         cVideo:cVideo,
@@ -52,16 +54,17 @@ module.exports.deletecommitee = function(req,res){
 }
 
 module.exports.updatecommitee = function(req,res){
-    let commiteeId= req.body.conferenceId
-    let commiteeName = req.body.commiteeName
-    let cDetail = req.body.cDetail
-    let cPhoto = req.body.cPhoto
-    let cVideo = req.body.cVideo
-    let cStartDate = req.body.cStartDate
-    let cTime = req.body.cTime
-    let cDescription = req.body.cDescription
+    let paramcommiteeId= req.body.commiteeId
+    let paramcommiteeName = req.body.commiteeName
+    let paramcommitee_seats = req.body.commitee_seats
+    let paramcDetail = req.body.cDetail
+    let paramcPhoto = req.body.cPhoto
+    let paramcVideo = req.body.cVideo
+    let paramcStartDate = req.body.cStartDate
+    let paramcTime = req.body.cTime
+    let paramcDescription = req.body.cDescription
 
-    commiteeModel.updateOne({_id: commiteeId}, {commiteeName:commiteeName, cDetail:cDetail, cPhoto:cPhoto, cVideo:cVideo, cStartDate:cStartDate,  cDescription:cDescription}, function(err,data){
+    commiteeModel.updateOne({_id:paramcommiteeId}, {commiteeName:paramcommiteeName, commitee_seats:paramcommitee_seats,cDetail:paramcDetail, cTime:paramcTime,cPhoto:paramcPhoto, cVideo:paramcVideo, cStartDate:paramcStartDate,  cDescription:paramcDescription}, function(err,data){
        if (err){
            res.json({msg:"SMW", data: err, status: -1})
        }else{
