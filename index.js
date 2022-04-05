@@ -12,6 +12,7 @@ const roleController = require("./controller/role-controller")
 const organizecontroller = require("./controller/organize-controller")
 const commiteecontroller = require("./controller/commitee-controller")
 const signupcontroller = require("./controller/signup-controller")
+const logincontroller = require("./controller/login-controller")
 const muncontroller = require("./controller/mun-controller")
 const bookingcontroller = require("./controller/booking-controller")
 const paymentcontroller = require("./controller/payment-controller")
@@ -50,6 +51,12 @@ app.post("/signups",signupcontroller.addSignup)
 app.get("/signups",signupcontroller.displayall)
 app.delete("/signups/:userId",signupcontroller.deletesignup)
 app.put("/signups", signupcontroller.updateSignup)
+
+//Login
+app.post("/logins", logincontroller.addLogin)
+app.get("/logins", logincontroller.displayall)
+app.delete("/logins/:userId", logincontroller.deletelogin)
+app.put("/logins", logincontroller.updateLogin)
 
 //organizeDetail
 app.post("/organizes",organizecontroller.addoraganize)
